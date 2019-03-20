@@ -1,0 +1,4 @@
+<h1>Hello AUG NSK!</h1>
+<p>
+    Number of projects: ${projectCount}
+</p>

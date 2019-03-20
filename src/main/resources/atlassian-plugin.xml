@@ -1,0 +1,37 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+	
+    <resource type="i18n" name="i18n" location="hello-aug-servlet"/>
+	
+	<servlet name="Hello AUG Servlet" key="hello-aug" class="ru.aug.nsk.servlet.HelloAugServlet">
+		<description>Says Hello AUG NSK!</description>
+        <url-pattern>/helloaug</url-pattern>
+    </servlet>
+
+    <web-item key="open-hello-aug-servlet" section="system.top.navigation.bar">
+        <description>Open "hello AUG" servlet page</description>
+        <label key="hello.aug.servlet.label"/>
+        <link>/plugins/servlet/helloaug</link>
+
+        <condition class="com.atlassian.jira.plugin.webfragment.conditions.UserLoggedInCondition">
+        </condition>
+    </web-item>
+	
+    <web-resource key="hello-aug-servlet-resources" name="hello-aug-servlet Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+        <!--<resource type="download" name="sample.js" location="/js/sample.js"/>-->
+        <resource type="download" name="images/" location="/images"/>
+        <resource type="download" name="templates/" location="/templates"/>
+
+        <context>hello-aug-servlet</context>
+    </web-resource>
+		
+</atlassian-plugin>
